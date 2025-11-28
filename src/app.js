@@ -1,18 +1,23 @@
 import express from "express";
-import cors from "cors";
-import carRoutes from "./routes/car.routes.js";
 import dotenv from "dotenv";
+import mongoose from "mongoose";
+import cors from "cors";
+
+import carRoutes from "./routes/car.routes.js";
 
 dotenv.config();
-const app = express();
 
-// const allowedOrigins = [
-//     "http://localhost:5000",
-//     // Add other allowed domains here in production
-// ];
+const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use("/api", carRoutes);
+
+mongoose
+    .connect(process.env.MONGO_URI)
+    .then(() => console.log("MongoDB connected"))
+    .catch((err) => console.log(err));
 
 export default app;
