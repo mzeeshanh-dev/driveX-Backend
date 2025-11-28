@@ -9,4 +9,8 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+export const deleteImage = async (publicId) => {
+    return cloudinary.uploader.destroy(publicId);
+};
+
 export default cloudinary;

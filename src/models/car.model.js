@@ -16,6 +16,7 @@ const carSchema = new mongoose.Schema(
         },
         category: {
             type: String,
+            enum: ["Luxury", "SUV", "Sedan", "Sports"],
             required: true
         },
         features: {
@@ -27,7 +28,10 @@ const carSchema = new mongoose.Schema(
             enum: ["available", "rented", "maintenance"],
             required: true
         },
-        image: { type: String, required: true },
+        image: {
+            type: String,
+            required: true
+        },
     },
     { timestamps: true }
 );

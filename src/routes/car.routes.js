@@ -1,12 +1,19 @@
 import express from "express";
-import { createCar, getAllCars } from "../controllers/car.controller.js";
 import { upload } from "../middleware/upload.js";
 import { validate } from "../middleware/validate.js";
 import { carValidationSchema } from "../shared/validators/car.validators.js";
+import {
+    createCar,
+    getAllCars,
+    updateCar,
+    deleteCar
+} from "../controllers/car.controller.js";
 
 const router = express.Router();
 
 router.post("/cars/add", upload.single("image"), validate(carValidationSchema), createCar);
 router.get("/cars/all", getAllCars);
+router.put("/cars/edit/:id", upload.single("image"), updateCar);
+router.delete("/cars/delete/:id", deleteCar);
 
 export default router;
