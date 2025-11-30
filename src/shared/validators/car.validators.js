@@ -6,5 +6,5 @@ export const carValidationSchema = Joi.object({
     pricePerDay: Joi.number().required(),
     category: Joi.string().valid("Luxury", "SUV", "Sedan", "Sports").required(),
     features: Joi.array().items(Joi.string()).optional(),
-    status: Joi.string().valid("available", "unavailable").required(),
+    status: Joi.string().valid("available", "rented", "maintenance").required(),
 });
