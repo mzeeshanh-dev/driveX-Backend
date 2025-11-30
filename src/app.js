@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 
 import carRoutes from "./routes/car.routes.js";
+import bookingRoutes from "./routes/booking.route.js"
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", carRoutes);
+app.use("/api", bookingRoutes);
 
 mongoose
     .connect(process.env.MONGO_URI)
