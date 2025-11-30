@@ -19,3 +19,7 @@ export const updateCarService = async (id, updateData) => {
 export const deleteCarService = async (id) => {
     return await Car.findByIdAndDelete(id);
 };
+
+export const getAllAvailableCarsService = async () => {
+    return await Car.find({ status: "available" }).sort({ createdAt: -1 });
+};

@@ -6,7 +6,8 @@ import {
     createCar,
     getAllCars,
     updateCar,
-    deleteCar
+    deleteCar,
+    getAllAvailableCars
 } from "../controllers/car.controller.js";
 
 const router = express.Router();
@@ -15,5 +16,6 @@ router.post("/cars/add", upload.single("image"), validate(carValidationSchema), 
 router.get("/cars/all", getAllCars);
 router.put("/cars/edit/:id", upload.single("image"), updateCar);
 router.delete("/cars/delete/:id", deleteCar);
+router.get("/cars/available", getAllAvailableCars);
 
 export default router;

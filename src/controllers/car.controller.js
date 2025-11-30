@@ -3,7 +3,8 @@ import {
     getAllCarsService,
     getCarByIdService,
     updateCarService,
-    deleteCarService
+    deleteCarService,
+    getAllAvailableCarsService
 } from "../services/car.service.js";
 import { deleteImage } from "../utils/cloudinary.js";
 
@@ -91,6 +92,19 @@ export const deleteCar = async (req, res) => {
         await deleteCarService(carId);
 
         res.status(200).json({ success: true, message: "Car deleted successfully" });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+
+export const getAllAvailableCars = async (req, res) => {
+    try {
+        const cars = await getAllAvailableCarsService();
+        res.status(200).json({
+            success: true,
+            count: cars.length,
+            data: cars,
+        });
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
     }
