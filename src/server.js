@@ -8,9 +8,10 @@ const PORT = process.env.PORT || 5000;
 
 connectDB();
 
-app.get('/', (res, req) => {
-    req.send("Server is running fine!!!")
+app.get('/', (req, res) => {
+    res.send("Server is running fine!!!");
 });
+
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
