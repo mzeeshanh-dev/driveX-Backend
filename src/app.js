@@ -13,7 +13,7 @@ const app = express();
 app.use(
     cors({
         origin: "https://drive-x-git.vercel.app",
-        methods: ["GET", "POST", "PUT", "DELETE"],
+        methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
         credentials: true,
     })
 );
